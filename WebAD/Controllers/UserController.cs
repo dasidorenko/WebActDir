@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebAD.Models;
 
 namespace WebAD.Controllers
 {
@@ -11,7 +12,12 @@ namespace WebAD.Controllers
         // GET: User
         public ActionResult Index()
         {
-            return View();
+            var user = new User()
+            {
+                login = "Sid"
+            };
+
+            return View(user);
         }
 
         public ActionResult СhangeName()
