@@ -17,12 +17,12 @@ namespace WebAD.Controllers
         }
 
         [HttpPost]
-        public ActionResult СhangeName(string xui, string pizda)
+        public ActionResult СhangeName(string xyi, string pizda)
         {
             var user = new User()
             {
-                login = xui,
-                name = pizda
+                name = pizda,
+                login = xyi               
             };
 
             return View(user);
