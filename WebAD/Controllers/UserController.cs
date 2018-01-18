@@ -10,19 +10,22 @@ namespace WebAD.Controllers
     public class UserController : Controller
     {
         // GET: User
+        [HttpGet]
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult СhangeName(string xui, string pizda)
         {
             var user = new User()
             {
-                login = "Sid"
+                login = xui,
+                name = pizda
             };
 
             return View(user);
-        }
-
-        public ActionResult СhangeName()
-        {
-            return View();
         }
 
         public ActionResult СhangeSurname()

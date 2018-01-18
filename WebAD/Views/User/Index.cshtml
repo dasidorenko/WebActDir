@@ -1,8 +1,14 @@
-﻿@model WebAD.Models.User
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
-<h3>@Model.login</h3>
+<form method="post" action="СhangeName">
+    <input type="hidden" value="@ViewBag.BookId" name="BookId" />
+    <p>Введите свое имя </p>
+    <input type="text" name="xyi" />
+    <p>Введите адрес :</p>
+    <input type="text" name="pizda" />
+    <input type="submit" value="Отправить" />
+</form>
