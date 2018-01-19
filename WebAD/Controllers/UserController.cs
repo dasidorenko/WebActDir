@@ -52,14 +52,23 @@ namespace WebAD.Controllers
             newUser.Properties["samAccountName"].Add(userLogin);
             newUser.Properties["givenName"].Add(userFirstName);
             newUser.Properties["sn"].Add(userSecondName);
-
             newUser.CommitChanges();
+
             newUser.Invoke("SetPassword", new object[] { userPassword });
-
             newUser.CommitChanges();
+
+            EnableUser(newUser);
             dirEntry.Close();
             newUser.Close();
             return View();
+        }
+
+        public void EnableUser(DirectoryEntry user) 
+        {
+            int old_UAC = (int)user.Properties["userAccountControl"].Value;
+            int ADS_UF_ACCOUNTDISABLE = 2;
+            user.Properties["userAccountControl"][0] = (old_UAC & ~ADS_UF_ACCOUNTDISABLE);
+            user.CommitChanges();
         }
 
         public ActionResult AddUsers()
