@@ -9,23 +9,15 @@ namespace WebAD.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
-        [HttpGet]
+        // GET: User       
         public ActionResult Index()
         {
             return View();
         }
-
-        [HttpPost]
-        public ActionResult ChangeName(string xyi, string pizda)
+        
+        public ActionResult ChangeName()
         {
-            var user = new User()
-            {
-                name = pizda,
-                login = xyi
-            };
-
-            return View(user);
+            return View();
         }
 
         public ActionResult ChangeSurname()
@@ -43,8 +35,16 @@ namespace WebAD.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult AddUser()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddUser(string name, string surname, string login, string password)
+        {
+            
             return View();
         }
 
