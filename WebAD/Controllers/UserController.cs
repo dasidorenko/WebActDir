@@ -71,6 +71,21 @@ namespace WebAD.Controllers
             user.CommitChanges();
         }
 
+        public void unlockAccount(DirectoryEntry user)
+        {
+            user.Properties["LockOutTime"].Value = 0; //unlock account
+            user.CommitChanges();
+            user.Close();
+        }
+
+        public void ResetPassword(DirectoryEntry user, string newPassword)
+        {
+            user.Invoke("SetPassword", new object[] { newPassword });
+            user.Properties["LockOutTime"].Value = 0; //unlock account
+            user.CommitChanges();
+            user.Close();
+        }
+
         public ActionResult AddUsers()
         {
             return View();
